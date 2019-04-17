@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- 这是接口映射文件，用于映射数据操作接口的方法,相当接口实现类 -->
+	<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 <!-- 在mapper映射文件中，使用namespace关联映射的接口  -->
+	<mapper namespace="com.neuedu.mybatisdemo.mapper.UserInfoMapper">
+	  <!-- 查询数据使用select标签进行配置,id配置接口方法的名称 -->
+	  
+	  <!-- 查询所有 -->
+	  <select id="findAll" resultType="com.neuedu.mybatisdemo.bean.UserInfo">
+	    select * from user
+	  </select>
+	  
+	  <!-- 查询结果统计 -->
+	  <select id="findTotal" resultType="int">
+	    select count(*) from user
+	  </select>	  
+	  
+	  <!-- 查询结果统计 -->
+	  <select id="findSth"  parameterType="String" resultType="com.neuedu.mybatisdemo.bean.UserInfo">
+	      <!-- 精确查询 -->
+	      <!-- select * from user where name like #{name} -->
+	      
+	      <!-- 模糊查询 -->
+	    select * from user where name like "%"#{name}"%"
+	  </select>	 	
+	  
+	  
+	  <select id="findId"  parameterType="int" resultType="com.neuedu.mybatisdemo.bean.UserInfo">
+	   <!-- 模糊查询 -->
+	    select * from user where id like #{id}
+	  </select>	 	  
+	  
+	  
+	</mapper>
